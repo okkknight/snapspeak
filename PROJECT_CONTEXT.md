@@ -22,13 +22,13 @@ camera mode -> capture/upload photo -> result mode -> play English -> switch mod
 - Visual reference is in `docs/image.png`
 - Project name is standardized as `snapspeak`
 - Git repository is initialized on `main`
-- React/Vite component library is implemented in `src/`
-- App.tsx is a component showcase page, not the final product flow
+- React/Vite mobile prototype flow is implemented in `src/`
+- App.tsx now switches between Camera Mode and Result Mode
 - MVP uses mock content instead of a real AI API
 
 ## Current Latest Task And Status
 
-- Latest completed task: build the reusable mobile UI component library and showcase page
+- Latest completed task: convert the component library into a mobile-only camera/result prototype
 - Status: complete
 
 ## Architecture Or State Flow
@@ -48,6 +48,7 @@ camera mode -> capture/upload photo -> result mode -> play English -> switch mod
 - `src/App.tsx`
 - `src/components/`
 - `src/data/mockResults.ts`
+- `src/styles.css`
 - `flow/task/TASK_TEMPLATE.md`
 - `flow/issue/ISSUE_TEMPLATE.md`
 - `flow/dev_report/DEV_REPORT_TEMPLATE.md`
@@ -62,8 +63,8 @@ camera mode -> capture/upload photo -> result mode -> play English -> switch mod
 
 ## Runtime Notes
 
-- The repo currently contains docs only
-- No buildable frontend app exists yet
+- The repo now contains a buildable Vite frontend prototype
+- The current app is a mobile-only UI prototype, not the final production flow
 - `docs/.DS_Store` and root `.DS_Store` should stay ignored
 
 ## Working Rules
@@ -77,7 +78,7 @@ camera mode -> capture/upload photo -> result mode -> play English -> switch mod
 ## Open Decisions
 
 - When to replace mock output with a real vision model API
-- Whether the first runnable UI should be pure mock data or photo upload plus local static mapping
+- Whether to keep the current mock-only prototype or add local image upload handling before any backend work
 
 ## Main Risks And Tradeoffs
 

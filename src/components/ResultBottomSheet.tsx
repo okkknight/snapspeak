@@ -9,9 +9,13 @@ type Props = {
   level: Level;
   result: AIResult;
   chineseOpen?: boolean;
+  playing?: boolean;
   onModeChange?: (mode: Mode) => void;
   onLevelChange?: (level: Level) => void;
   onToggleChinese?: () => void;
+  onPlay?: () => void;
+  onRetake?: () => void;
+  onSwitchLevel?: () => void;
   className?: string;
 };
 
@@ -20,9 +24,13 @@ export function ResultBottomSheet({
   level,
   result,
   chineseOpen = false,
+  playing = false,
   onModeChange,
   onLevelChange,
   onToggleChinese,
+  onPlay,
+  onRetake,
+  onSwitchLevel,
   className,
 }: Props) {
   return (
@@ -36,7 +44,21 @@ export function ResultBottomSheet({
         <LevelSelector active={level} onChange={onLevelChange} />
       </div>
       <ModeTabs active={mode} onChange={onModeChange} />
-      <EnglishResultCard result={result} chineseOpen={chineseOpen} onToggleChinese={onToggleChinese} />
+      <EnglishResultCard
+        result={result}
+        chineseOpen={chineseOpen}
+        playing={playing}
+        onToggleChinese={onToggleChinese}
+        onPlay={onPlay}
+      />
+      <div className="result-bottom-sheet__footer">
+        <button type="button" className="result-bottom-sheet__ghost-button" onClick={onRetake}>
+          Retake
+        </button>
+        <button type="button" className="result-bottom-sheet__primary-button" onClick={onSwitchLevel}>
+          Switch level
+        </button>
+      </div>
     </section>
   );
 }

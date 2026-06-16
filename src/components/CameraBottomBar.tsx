@@ -7,10 +7,11 @@ import { ImagesIcon, SettingsIcon } from './icons';
 type Props = {
   mode: Mode;
   level: Level;
+  onShutter?: () => void;
   className?: string;
 };
 
-export function CameraBottomBar({ mode, level, className }: Props) {
+export function CameraBottomBar({ mode, level, onShutter, className }: Props) {
   return (
     <div className={cn('camera-bottom-bar', className)}>
       <ModeLevelChip mode={mode} level={level} />
@@ -18,7 +19,7 @@ export function CameraBottomBar({ mode, level, className }: Props) {
         <button type="button" className="camera-bottom-bar__icon-button" aria-label="Open album">
           <ImagesIcon size={20} />
         </button>
-        <ShutterButton />
+        <ShutterButton onClick={onShutter} />
         <button type="button" className="camera-bottom-bar__icon-button" aria-label="Open settings">
           <SettingsIcon size={20} />
         </button>

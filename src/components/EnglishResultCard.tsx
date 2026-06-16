@@ -9,10 +9,19 @@ type Props = {
   result: AIResult;
   chineseOpen?: boolean;
   onToggleChinese?: () => void;
+  onPlay?: () => void;
+  playing?: boolean;
   className?: string;
 };
 
-export function EnglishResultCard({ result, chineseOpen = false, onToggleChinese, className }: Props) {
+export function EnglishResultCard({
+  result,
+  chineseOpen = false,
+  onToggleChinese,
+  onPlay,
+  playing = false,
+  className,
+}: Props) {
   return (
     <article className={cn('english-result-card', className)}>
       <div className="english-result-card__header">
@@ -34,8 +43,8 @@ export function EnglishResultCard({ result, chineseOpen = false, onToggleChinese
       <WordChips words={result.words} />
 
       <div className="english-result-card__actions">
-        <VoiceButton />
-        <button type="button" className="english-result-card__secondary">
+        <VoiceButton playing={playing} onClick={onPlay} />
+        <button type="button" className="english-result-card__secondary" onClick={onPlay}>
           Repeat
         </button>
       </div>
