@@ -90,35 +90,33 @@ export default function App() {
 
   return (
     <main className="mobile-app">
-      <div className="mobile-app__shell">
-        {screen === 'camera' ? (
-          <section className="mobile-screen mobile-screen--camera" aria-label="Camera mode">
-            <MobileStatusBar />
-            <CameraPreview className="mobile-screen__preview" />
-            <CameraBottomBar mode={activeMode} level={activeLevel} onShutter={handleShutter} className="mobile-screen__bottom-bar" />
-          </section>
-        ) : (
-          <section className="mobile-screen mobile-screen--result" aria-label="Result mode">
-            <MobileStatusBar />
-            <CapturedPhotoPreview className="mobile-screen__preview" />
-            <ResultBottomSheet
-              mode={activeMode}
-              level={activeLevel}
-              result={result}
-              chineseOpen={chineseOpen}
-              playing={playing}
-              onModeChange={setActiveMode}
-              onLevelChange={setActiveLevel}
-              onModeStep={handleModeStep}
-              onToggleChinese={() => setChineseOpen((value) => !value)}
-              onPlay={handlePlay}
-              onRetake={handleRetake}
-              onSwitchLevel={handleSwitchLevel}
-              className="mobile-screen__sheet"
-            />
-          </section>
-        )}
-      </div>
+      {screen === 'camera' ? (
+        <section className="mobile-screen mobile-screen--camera" aria-label="Camera mode">
+          <MobileStatusBar />
+          <CameraPreview className="mobile-screen__preview" />
+          <CameraBottomBar mode={activeMode} level={activeLevel} onShutter={handleShutter} className="mobile-screen__bottom-bar" />
+        </section>
+      ) : (
+        <section className="mobile-screen mobile-screen--result" aria-label="Result mode">
+          <MobileStatusBar />
+          <CapturedPhotoPreview className="mobile-screen__preview" />
+          <ResultBottomSheet
+            mode={activeMode}
+            level={activeLevel}
+            result={result}
+            chineseOpen={chineseOpen}
+            playing={playing}
+            onModeChange={setActiveMode}
+            onLevelChange={setActiveLevel}
+            onModeStep={handleModeStep}
+            onToggleChinese={() => setChineseOpen((value) => !value)}
+            onPlay={handlePlay}
+            onRetake={handleRetake}
+            onSwitchLevel={handleSwitchLevel}
+            className="mobile-screen__sheet"
+          />
+        </section>
+      )}
     </main>
   );
 }

@@ -40,22 +40,15 @@ button {
 
 #root {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .mobile-app {
-  width: min(100vw, 440px);
+  width: 100%;
   min-height: 100dvh;
-}
-
-.mobile-app__shell {
   display: flex;
   flex-direction: column;
   gap: 0;
-  min-height: 100dvh;
-  padding: 10px 12px calc(12px + env(safe-area-inset-bottom));
+  background: transparent;
 }
 
 .mobile-status-bar {
@@ -118,10 +111,9 @@ button {
   flex-direction: column;
   min-height: 0;
   overflow: hidden;
-  border: 1px solid rgba(17, 24, 39, 0.05);
-  border-radius: 36px;
-  background: linear-gradient(180deg, rgba(255, 252, 247, 0.9), rgba(248, 244, 235, 0.92));
-  box-shadow: var(--shadow-lg);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   isolation: isolate;
 }
 
@@ -133,7 +125,7 @@ button {
 .mobile-screen--camera .camera-preview {
   flex: 1;
   min-height: 0;
-  border-radius: 36px 36px 0 0;
+  border-radius: 0;
 }
 
 .mobile-screen--camera .camera-bottom-bar {
