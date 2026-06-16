@@ -16,13 +16,19 @@ export function CameraBottomBar({ mode, level, onShutter, className }: Props) {
     <div className={cn('camera-bottom-bar', className)}>
       <ModeLevelChip mode={mode} level={level} />
       <div className="camera-bottom-bar__actions">
-        <button type="button" className="camera-bottom-bar__icon-button" aria-label="Open album">
-          <ImagesIcon size={20} />
-        </button>
+        <div className="camera-bottom-bar__action">
+          <button type="button" className="camera-bottom-bar__icon-button" aria-label="Open album">
+            <ImagesIcon size={20} />
+          </button>
+          <span className="camera-bottom-bar__label">相册</span>
+        </div>
         <ShutterButton onClick={onShutter} />
-        <button type="button" className="camera-bottom-bar__icon-button" aria-label="Open settings">
-          <SettingsIcon size={20} />
-        </button>
+        <div className="camera-bottom-bar__action">
+          <button type="button" className="camera-bottom-bar__icon-button" aria-label="Open settings">
+            <SettingsIcon size={20} />
+          </button>
+          <span className="camera-bottom-bar__label">设置</span>
+        </div>
       </div>
     </div>
   );
