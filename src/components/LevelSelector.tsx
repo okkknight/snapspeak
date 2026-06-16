@@ -10,19 +10,15 @@ type Props = {
 };
 
 export function LevelSelector({ active, onChange, levels = ['Easy', 'Normal', 'Advanced'], className }: Props) {
+  const currentIndex = levels.indexOf(active);
+  const nextLevel = levels[(currentIndex + 1) % levels.length];
+
   return (
     <div className={cn('level-selector', className)}>
-      {levels.map((level) => (
-        <button
-          key={level}
-          type="button"
-          className={cn('level-selector__item', active === level && 'level-selector__item--active')}
-          onClick={() => onChange?.(level)}
-        >
-          <span>{level}</span>
-          {level === active ? <ChevronDownIcon size={12} /> : null}
-        </button>
-      ))}
+      <button type="button" className="level-selector__item" onClick={() => onChange?.(nextLevel)}>
+        <span>{active}</span>
+        <ChevronDownIcon size={12} />
+      </button>
     </div>
   );
 }

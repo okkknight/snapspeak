@@ -56,48 +56,6 @@ export function CameraIcon(props: IconProps) {
   );
 }
 
-export function DescribeIcon(props: IconProps) {
-  return (
-    <Icon {...props}>
-      <path d="M5 7h14" />
-      <path d="M5 12h10" />
-      <path d="M5 17h7" />
-    </Icon>
-  );
-}
-
-export function ExplainIcon(props: IconProps) {
-  return (
-    <Icon {...props}>
-      <path d="M6 5h12v14H9l-3 3V5Z" />
-      <path d="M9 9h6" />
-      <path d="M9 13h4" />
-    </Icon>
-  );
-}
-
-export function CommentIcon(props: IconProps) {
-  return (
-    <Icon {...props}>
-      <path d="M5 6h14v10H9l-4 4V6Z" />
-      <path d="M8 10h8" />
-      <path d="M8 13h5" />
-    </Icon>
-  );
-}
-
-export function PracticeIcon(props: IconProps) {
-  return (
-    <Icon {...props}>
-      <path d="M6 8h12" />
-      <path d="M8 5v6" />
-      <path d="M16 5v6" />
-      <path d="M12 11v8" />
-      <path d="M9 14h6" />
-    </Icon>
-  );
-}
-
 export function NotebookIcon(props: IconProps) {
   return (
     <Icon {...props}>

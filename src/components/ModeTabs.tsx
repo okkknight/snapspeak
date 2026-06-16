@@ -1,7 +1,6 @@
-import { useEffect, useRef, type PointerEvent } from 'react';
+import { useRef, type PointerEvent } from 'react';
 import { cn } from '../utils/cn';
 import type { Mode } from '../types';
-import { CommentIcon, DescribeIcon, ExplainIcon, PracticeIcon } from './icons';
 
 type Props = {
   active: Mode;
@@ -19,33 +18,6 @@ export function ModeTabs({
   className,
 }: Props) {
   const gesture = useRef<{ x: number; y: number } | null>(null);
-  const itemRefs = useRef<Record<Mode, HTMLButtonElement | null>>({
-    Describe: null,
-    Explain: null,
-    Comment: null,
-    Practice: null,
-  });
-
-  useEffect(() => {
-    itemRefs.current[active]?.scrollIntoView({
-      behavior: 'smooth',
-      inline: 'center',
-      block: 'nearest',
-    });
-  }, [active]);
-
-  const getModeIcon = (mode: Mode) => {
-    switch (mode) {
-      case 'Describe':
-        return DescribeIcon;
-      case 'Explain':
-        return ExplainIcon;
-      case 'Comment':
-        return CommentIcon;
-      case 'Practice':
-        return PracticeIcon;
-    }
-  };
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
     gesture.current = { x: event.clientX, y: event.clientY };
@@ -80,20 +52,13 @@ export function ModeTabs({
     >
       {modes.map((mode) => {
         const selected = mode === active;
-        const ModeIcon = getModeIcon(mode);
         return (
           <button
             key={mode}
             type="button"
-            ref={(node) => {
-              itemRefs.current[mode] = node;
-            }}
             className={cn('mode-tabs__item', selected && 'mode-tabs__item--active')}
             onClick={() => onChange?.(mode)}
           >
-            <span className={cn('mode-tabs__icon', `mode-tabs__icon--${mode.toLowerCase()}`)}>
-              <ModeIcon size={14} />
-            </span>
             <span className="mode-tabs__label">{mode}</span>
           </button>
         );

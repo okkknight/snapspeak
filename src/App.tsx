@@ -52,7 +52,7 @@ export default function App() {
 
   useEffect(() => {
     setChineseOpen(false);
-  }, [activeMode, activeLevel, screen]);
+  }, [activeMode, activeLevel]);
 
   const handlePlay = () => {
     if (typeof window === 'undefined' || !window.speechSynthesis) {
@@ -70,13 +70,14 @@ export default function App() {
 
   const handleShutter = () => {
     setScreen('result');
-    setChineseOpen(false);
+    setChineseOpen(true);
     setPlaying(false);
   };
 
   const handleRetake = () => {
     setScreen('camera');
     setPlaying(false);
+    setChineseOpen(false);
   };
 
   const handleSwitchLevel = () => {

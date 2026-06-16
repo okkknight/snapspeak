@@ -24,13 +24,6 @@ export function EnglishResultCard({
 }: Props) {
   return (
     <article className={cn('english-result-card', className)}>
-      <div className="english-result-card__header">
-        <div>
-          <p className="english-result-card__eyebrow">{result.title}</p>
-          <h3 className="english-result-card__title">Speak it naturally</h3>
-        </div>
-      </div>
-
       <div className="english-result-card__content">
         {result.english.map((line) => (
           <p key={line}>{line}</p>
