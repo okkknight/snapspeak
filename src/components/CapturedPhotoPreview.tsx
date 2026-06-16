@@ -11,6 +11,9 @@ export function CapturedPhotoPreview({ className }: Props) {
     <section className={cn('captured-photo-preview', className)}>
       <div className="captured-photo-preview__image">
         <SceneMock />
+        <button type="button" className="captured-photo-preview__expand-badge" aria-label="Expand photo preview">
+          <ExpandIcon size={14} />
+        </button>
       </div>
 
       <div className="captured-photo-preview__chrome">

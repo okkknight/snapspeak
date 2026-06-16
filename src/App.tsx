@@ -3,7 +3,7 @@ import { CameraBottomBar } from './components/CameraBottomBar';
 import { CameraPreview } from './components/CameraPreview';
 import { CapturedPhotoPreview } from './components/CapturedPhotoPreview';
 import { ResultBottomSheet } from './components/ResultBottomSheet';
-import { getMockResult, levelOrder } from './data/mockResults';
+import { getMockResult, levelOrder, modeOrder } from './data/mockResults';
 import type { Level, Mode } from './types';
 
 type Screen = 'camera' | 'result';
@@ -27,6 +27,11 @@ function MobileStatusBar() {
 function nextLevel(level: Level): Level {
   const index = levelOrder.indexOf(level);
   return levelOrder[(index + 1) % levelOrder.length];
+}
+
+function stepMode(mode: Mode, direction: -1 | 1): Mode {
+  const index = modeOrder.indexOf(mode);
+  return modeOrder[(index + direction + modeOrder.length) % modeOrder.length];
 }
 
 export default function App() {
@@ -78,18 +83,22 @@ export default function App() {
     setActiveLevel((current) => nextLevel(current));
   };
 
+  const handleModeStep = (direction: -1 | 1) => {
+    setActiveMode((current) => stepMode(current, direction));
+  };
+
   return (
     <main className="mobile-app">
       <div className="mobile-app__shell">
-        <MobileStatusBar />
-
         {screen === 'camera' ? (
           <section className="mobile-screen mobile-screen--camera" aria-label="Camera mode">
+            <MobileStatusBar />
             <CameraPreview className="mobile-screen__preview" />
             <CameraBottomBar mode={activeMode} level={activeLevel} onShutter={handleShutter} className="mobile-screen__bottom-bar" />
           </section>
         ) : (
           <section className="mobile-screen mobile-screen--result" aria-label="Result mode">
+            <MobileStatusBar />
             <CapturedPhotoPreview className="mobile-screen__preview" />
             <ResultBottomSheet
               mode={activeMode}
@@ -99,6 +108,7 @@ export default function App() {
               playing={playing}
               onModeChange={setActiveMode}
               onLevelChange={setActiveLevel}
+              onModeStep={handleModeStep}
               onToggleChinese={() => setChineseOpen((value) => !value)}
               onPlay={handlePlay}
               onRetake={handleRetake}

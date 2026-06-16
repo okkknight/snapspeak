@@ -3,7 +3,7 @@ import { VoiceButton } from './VoiceButton';
 import { ChineseExplanation } from './ChineseExplanation';
 import { cn } from '../utils/cn';
 import type { AIResult } from '../types';
-import { StarIcon } from './icons';
+import { StarIcon, VolumeIcon } from './icons';
 
 type Props = {
   result: AIResult;
@@ -29,9 +29,6 @@ export function EnglishResultCard({
           <p className="english-result-card__eyebrow">{result.title}</p>
           <h3 className="english-result-card__title">Speak it naturally</h3>
         </div>
-        <button type="button" className="english-result-card__star" aria-label="Favorite result">
-          <StarIcon size={18} />
-        </button>
       </div>
 
       <div className="english-result-card__content">
@@ -44,8 +41,17 @@ export function EnglishResultCard({
 
       <div className="english-result-card__actions">
         <VoiceButton playing={playing} onClick={onPlay} />
-        <button type="button" className="english-result-card__secondary" onClick={onPlay}>
-          Repeat
+        <button type="button" className="english-result-card__waveform" onClick={onPlay} aria-label="Play again">
+          <VolumeIcon size={16} />
+          <span className="english-result-card__waveform-bars" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+          </span>
+        </button>
+        <button type="button" className="english-result-card__star" aria-label="Favorite result">
+          <StarIcon size={18} />
         </button>
       </div>
 

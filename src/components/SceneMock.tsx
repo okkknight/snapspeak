@@ -1,8 +1,9 @@
-import { CameraIcon, NotebookIcon, SparkleIcon } from './icons';
+import { NotebookIcon, SparkleIcon } from './icons';
 
 export function SceneMock() {
   return (
     <div className="scene-mock">
+      <div className="scene-mock__window" />
       <div className="scene-mock__glow scene-mock__glow--left" />
       <div className="scene-mock__glow scene-mock__glow--right" />
       <div className="scene-mock__desk" />
@@ -20,9 +21,6 @@ export function SceneMock() {
       <div className="scene-mock__plant" aria-hidden="true">
         <SparkleIcon size={14} />
         <span />
-      </div>
-      <div className="scene-mock__camera-mark">
-        <CameraIcon size={14} />
       </div>
     </div>
   );
