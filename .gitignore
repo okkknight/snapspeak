@@ -4,3 +4,6 @@ dist/
 coverage/
 .vite/
 *.log
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts

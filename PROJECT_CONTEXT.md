@@ -22,12 +22,13 @@ camera mode -> capture/upload photo -> result mode -> play English -> switch mod
 - Visual reference is in `docs/image.png`
 - Project name is standardized as `snapspeak`
 - Git repository is initialized on `main`
-- No implementation code exists yet
-- MVP can use mock content instead of a real AI API
+- React/Vite component library is implemented in `src/`
+- App.tsx is a component showcase page, not the final product flow
+- MVP uses mock content instead of a real AI API
 
 ## Current Latest Task And Status
 
-- Latest completed task: initialize repo docs and handoff scaffolding
+- Latest completed task: build the reusable mobile UI component library and showcase page
 - Status: complete
 
 ## Architecture Or State Flow
@@ -44,6 +45,9 @@ camera mode -> capture/upload photo -> result mode -> play English -> switch mod
 - `AGENTS.md`
 - `docs/snapspeak_PRD.md`
 - `docs/image.png`
+- `src/App.tsx`
+- `src/components/`
+- `src/data/mockResults.ts`
 - `flow/task/TASK_TEMPLATE.md`
 - `flow/issue/ISSUE_TEMPLATE.md`
 - `flow/dev_report/DEV_REPORT_TEMPLATE.md`
