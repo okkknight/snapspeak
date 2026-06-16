@@ -40,12 +40,14 @@ export function ResultBottomSheet({
     <section className={cn('result-bottom-sheet', className)}>
       <div className="result-bottom-sheet__handle" />
       <div className="result-bottom-sheet__header">
-        <div>
+        <div className="result-bottom-sheet__headline">
           <p className="result-bottom-sheet__eyebrow">Result mode</p>
           <h3 className="result-bottom-sheet__title">{result.title}</h3>
           <p className="result-bottom-sheet__hint">Swipe tabs to switch mode</p>
         </div>
-        <LevelSelector active={level} onChange={onLevelChange} />
+        <div className="result-bottom-sheet__level-row">
+          <LevelSelector active={level} onChange={onLevelChange} />
+        </div>
       </div>
       <ModeTabs active={mode} onChange={onModeChange} onStep={onModeStep} />
       <EnglishResultCard
