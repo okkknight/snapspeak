@@ -804,12 +804,13 @@ button {
 
 .voice-button {
   color: #fff;
-  background: linear-gradient(180deg, #5133d8, #26105a);
-  box-shadow: 0 12px 22px rgba(65, 34, 180, 0.2);
+  background: #30156b;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: none;
 }
 
 .voice-button--playing {
-  background: linear-gradient(180deg, #6d4aff, #5133d8);
+  background: #4b31d4;
 }
 
 .english-result-card__waveform {
