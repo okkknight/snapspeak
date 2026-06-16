@@ -15,3 +15,5 @@
 
 - Reviewer verification on the VPS passed for the core mobile flow when opened at `https://boringmax.com/snapspeak/`: live camera preview, shutter capture, result generation, mode switching, level switching, cache reuse, voice playback, Chinese explanation toggle, share/expand, retake, and retry after a forced generation failure all worked.
 - Reviewer found two deployment issues that keep the overall acceptance from being a clean pass: opening `https://boringmax.com/snapspeak` without the trailing slash returns 404 because the frontend resolves `./api/generate` against the wrong base URL, and uploading a typical ~1.6 MB image returned `Payload Too Large` while only a very small image uploaded successfully.
+- Fixed the above deployment issues by switching the generation request to the Vite base path (`/snapspeak/api/generate`) and downscaling large uploads before encoding them for Codex.
+- Re-synced the app and site to the `boringmax` VPS and verified on the live mobile page that both `https://boringmax.com/snapspeak` and upload flow now return real generation content instead of `404` / `Payload Too Large`.
