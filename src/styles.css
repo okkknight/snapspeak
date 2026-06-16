@@ -552,6 +552,11 @@ button {
     0 -10px 24px rgba(0, 0, 0, 0.18);
 }
 
+.camera-bottom-bar__mode {
+  display: flex;
+  justify-content: center;
+}
+
 .camera-bottom-bar__actions {
   display: grid;
   grid-template-columns: 1fr auto 1fr;

@@ -14,7 +14,9 @@ type Props = {
 export function CameraBottomBar({ mode, level, onShutter, className }: Props) {
   return (
     <div className={cn('camera-bottom-bar', className)}>
-      <ModeLevelChip mode={mode} level={level} />
+      <div className="camera-bottom-bar__mode">
+        <ModeLevelChip mode={mode} level={level} />
+      </div>
       <div className="camera-bottom-bar__actions">
         <div className="camera-bottom-bar__action camera-bottom-bar__action--start">
           <button type="button" className="camera-bottom-bar__icon-button" aria-label="Open album">
