@@ -137,7 +137,7 @@ button {
 }
 
 .mobile-screen--camera .camera-bottom-bar {
-  margin: 0 12px 12px;
+  margin: 0;
   border-radius: 28px;
 }
 
