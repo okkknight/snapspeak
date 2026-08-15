@@ -8,7 +8,9 @@ import { CameraIcon, SwapIcon } from './icons';
 type Props = {
   mode: Mode;
   level: Level;
-  result: AIResult;
+  result?: AIResult | null;
+  loading?: boolean;
+  error?: string | null;
   chineseOpen?: boolean;
   playing?: boolean;
   onModeChange?: (mode: Mode) => void;
@@ -16,6 +18,7 @@ type Props = {
   onLevelChange?: (level: Level) => void;
   onToggleChinese?: () => void;
   onPlay?: () => void;
+  onRetry?: () => void;
   onRetake?: () => void;
   onSwitchLevel?: () => void;
   className?: string;
@@ -25,6 +28,8 @@ export function ResultBottomSheet({
   mode,
   level,
   result,
+  loading = false,
+  error = null,
   chineseOpen = false,
   playing = false,
   onModeChange,
@@ -32,6 +37,7 @@ export function ResultBottomSheet({
   onLevelChange,
   onToggleChinese,
   onPlay,
+  onRetry,
   onRetake,
   onSwitchLevel,
   className,
@@ -40,16 +46,19 @@ export function ResultBottomSheet({
     <section className={cn('result-bottom-sheet', className)}>
       <div className="result-bottom-sheet__handle" />
       <div className="result-bottom-sheet__header">
-        <h3 className="result-bottom-sheet__title">{result.title}</h3>
+        <h3 className="result-bottom-sheet__title">{loading ? 'Generating' : result?.title ?? mode}</h3>
         <LevelSelector active={level} onChange={onLevelChange} />
       </div>
       <ModeTabs active={mode} onChange={onModeChange} onStep={onModeStep} />
       <EnglishResultCard
         result={result}
+        loading={loading}
+        error={error}
         chineseOpen={chineseOpen}
         playing={playing}
         onToggleChinese={onToggleChinese}
         onPlay={onPlay}
+        onRetry={onRetry}
       />
       <div className="result-bottom-sheet__footer">
         <button type="button" className="result-bottom-sheet__ghost-button" onClick={onRetake}>

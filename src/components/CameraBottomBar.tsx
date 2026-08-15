@@ -8,10 +8,13 @@ type Props = {
   mode: Mode;
   level: Level;
   onShutter?: () => void;
+  onOpenAlbum?: () => void;
+  onSwitchCamera?: () => void;
+  onSettings?: () => void;
   className?: string;
 };
 
-export function CameraBottomBar({ mode, level, onShutter, className }: Props) {
+export function CameraBottomBar({ mode, level, onShutter, onOpenAlbum, onSwitchCamera, onSettings, className }: Props) {
   return (
     <div className={cn('camera-bottom-bar', className)}>
       <div className="camera-bottom-bar__mode">
@@ -19,14 +22,14 @@ export function CameraBottomBar({ mode, level, onShutter, className }: Props) {
       </div>
       <div className="camera-bottom-bar__actions">
         <div className="camera-bottom-bar__action camera-bottom-bar__action--start">
-          <button type="button" className="camera-bottom-bar__icon-button" aria-label="Open album">
+          <button type="button" className="camera-bottom-bar__icon-button" aria-label="Open album" onClick={onOpenAlbum}>
             <ImagesIcon size={20} />
           </button>
           <span className="camera-bottom-bar__label">相册</span>
         </div>
         <ShutterButton onClick={onShutter} />
         <div className="camera-bottom-bar__action camera-bottom-bar__action--end">
-          <button type="button" className="camera-bottom-bar__icon-button" aria-label="Open settings">
+          <button type="button" className="camera-bottom-bar__icon-button" aria-label="Open settings" onClick={onSettings ?? onSwitchCamera}>
             <SettingsIcon size={20} />
           </button>
           <span className="camera-bottom-bar__label">设置</span>
