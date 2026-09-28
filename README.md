@@ -2,6 +2,8 @@
 
 snapspeak 是一个移动端优先的拍照学英语应用。拍照或上传图片后，可以按模式和难度获取简短英语表达，并播放英文语音。前端使用 React/Vite，服务端通过本机 Codex CLI 生成内容。
 
+在线体验：[snapspeak](https://boringmax.com/snapspeak/)。
+
 ## 本地运行
 
 需要 Node.js、npm；使用真实生成功能时，服务端还需要可用的 Codex CLI 登录状态。
