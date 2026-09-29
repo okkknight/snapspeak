@@ -1,22 +1,43 @@
 # snapspeak
 
-snapspeak 是一个移动端优先的拍照学英语应用。拍照或上传图片后，可以按模式和难度获取简短英语表达，并播放英文语音。前端使用 React/Vite，服务端通过本机 Codex CLI 生成内容。
+拍一张照片，把眼前的真实场景变成一段可听、可读、可跟读的英语。
 
-在线体验：[snapspeak](https://boringmax.com/snapspeak/)。
+snapspeak 是一个手机端的照片英语练习原型。它从相机页出发：拍照或上传图片，AI 根据画面生成英文内容，你可以播放语音，再用不同模式和难度让同一张照片变成新的练习。它要验证的是一条很短的学习闭环：**拍照 → 英文输出 → 听一听 → 换一种方式再练。**
+
+**[拿照片试试 →](https://boringmax.com/snapspeak/)**
+
+拍照或上传后，可以在同一张图上切换 Describe、Explain、Comment 和 Practice；英文可以直接播放，中文解释默认收起，需要时再打开。
+
+## 四种模式
+
+| 模式 | 得到什么 |
+| --- | --- |
+| Describe | 把画面说出来 |
+| Explain | 讲清它是什么、怎么用 |
+| Comment | 像聊天一样说一句感受 |
+| Practice | 给自己一道开口题 |
+
+同一张照片可以换模式，也可以调 Easy、Normal、Advanced 三档难度。现在它专注在“拍一张、学几句、听一听”这一件事。
 
 ## 本地运行
 
-需要 Node.js、npm；使用真实生成功能时，服务端还需要可用的 Codex CLI 登录状态。
+需要 Node.js、npm 和已登录的 Codex CLI。安装依赖后，分别启动服务端和前端：
 
 ```bash
 npm install
 npm run dev:server
 ```
 
-在另一个终端运行 `npm run dev` 启动前端。产品背景见 [项目上下文](PROJECT_CONTEXT.md)，部署结构见 [VPS 文档](docs/SNAPSPEAK_VPS_DEPLOYMENT.md)。
+另开一个终端：
 
-服务端 `/api/generate` 当前没有内置认证或限流。部署到公网前，应在网关增加访问控制和调用限制，避免他人消耗服务器的 AI 配额。
+```bash
+npm run dev
+```
+
+服务端接收照片，调用本机 Codex CLI 生成内容；前端由 React/Vite 构建。应用代码在 [`src/`](src/)，生成服务在 [`server/`](server/)。想改交互或部署，再看 [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md) 和 [VPS 文档](docs/SNAPSPEAK_VPS_DEPLOYMENT.md)。
+
+当前 `/api/generate` 没有内置认证或限流。自行部署到公网时，需要在网关加访问控制和调用限制，避免他人消耗你的 AI 配额。
 
 ## 许可
 
-应用代码采用 [MIT 许可证](LICENSE)。第三方依赖及其素材遵循各自的许可证。
+应用代码采用 [MIT 许可证](LICENSE)。第三方依赖及素材遵循各自的许可证。
